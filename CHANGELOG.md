@@ -3,6 +3,14 @@
 Each section is a version of the mod, the `version` in `mod.json`. The release workflow copies the
 section of a tagged version into the release notes.
 
+## 1.1.0
+
+Balance (Moru):
+- Frostbuy's price is 50,000 gold every time (it doubled after each purchase, up to 1,000,000). A
+  bonsai on the shelf from 1.0.0 at a higher price drops to 50,000 on the next visit.
+- After a purchase, Frostbuy has another once quests are cleared: 3 in the first world, 2 in the
+  second, none from the third (back on the next visit).
+
 ## 1.0.0
 
 First version.

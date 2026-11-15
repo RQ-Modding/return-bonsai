@@ -2,18 +2,19 @@
 -- opens the bonsai storage, a window like Quest Storage with 2 cells for each bonsai worn (at most
 -- 15). Items go in from the game's Quest Storage (a bonsai button on each tile) and come back the
 -- same way. However the quest ends, the bonsai storage's items stay in the storage, appraised for
--- free. A bonsai lasts 3 quests, then turns to Bonsai Ashes. Frostbuy sells it for 50,000 gold,
--- twice that after each purchase (up to 1,000,000), and again only after 3 quests cleared; it can
--- also come out of a chest in the Malgrid Dungeon's 9th and 10th strata, once per run.
+-- free. A bonsai lasts 3 quests, then turns to Bonsai Ashes. Frostbuy sells it for 50,000 gold, and
+-- after a purchase again only once quests are cleared: 3 in the first world, 2 in the second, none
+-- from the third (it is back on the next visit); it can also come out of a chest in the Malgrid
+-- Dungeon's 9th and 10th strata, once per run.
 -- Lua owns every rule; the loader gives the Quest Storage window's tiles, the free appraisal and the
 -- window's locked cells (loader 2.47.0).
 
 local USES = 3              -- quests a bonsai lasts
 local CELLS = 2             -- cells each bonsai worn gives, once per quest
 local MAX_CELLS = 15        -- as Quest Storage
-local PRICE_FIRST = 50000
-local PRICE_MAX = 1000000
-local RESTOCK_AFTER = 3     -- quests cleared after a purchase before it is sold again
+local PRICE = 50000         -- Frostbuy's price, every time
+local RESTOCK_AFTER = { 3, 2 } -- quests cleared after a purchase before it is sold again, by world;
+                               -- from the third world, none
 local DROP_QUESTS = { [145] = true, [146] = true } -- Malgrid Dungeon, 9th and 10th strata
 local DROP_CHANCE = 1       -- percent, each time a chest picks its item there
 local QUEST_STORAGE, STORAGE = 8, 11
@@ -35,7 +36,7 @@ for n = USES, 1, -1 do
     name = "Return Bonsai",
     type = "item",
     icon = "icons/bonsai.webp",
-    price = PRICE_FIRST,
+    price = PRICE,
     info = "The legendary Return Bonsai.$Allows you to return items$even if your quest fails.$" .. uses_line(n),
   })
   BONSAI[n] = no
@@ -263,16 +264,17 @@ end)
 -- Frostbuy --------------------------------------------------------------------------
 
 local function price_now()
-  local p = PRICE_FIRST
-  for _ = 1, rq.savedata.get("bought", 0) do
-    p = math.min(p * 2, PRICE_MAX)
-  end
-  return p
+  return PRICE
+end
+
+-- The quests to clear after a purchase in the world being played (1 before a save is loaded).
+local function restock_after()
+  return RESTOCK_AFTER[rq.world.current() or 1] or 0
 end
 
 local function for_sale()
   if rq.savedata.get("bought", 0) == 0 then return true end
-  return rq.savedata.get("cleared_since", 0) >= RESTOCK_AFTER
+  return rq.savedata.get("cleared_since", 0) >= restock_after()
 end
 
 rq.shop.on_stock(function()
@@ -329,6 +331,7 @@ return {
   to_bonsai = to_bonsai,
   to_quest_storage = to_quest_storage,
   price_now = price_now,
+  restock_after = restock_after,
   for_sale = for_sale,
   is_open = function() return open end,
   set_open = function(v) open = v and true or false end,

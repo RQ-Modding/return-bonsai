@@ -17,8 +17,9 @@ A legendary held item that keeps a quest's best finds, even when the quest fails
     storage's items are in your storage afterwards, appraised for free.
 - **A bonsai lasts 3 quests with a map**: each bonsai that gave cells in a quest loses a use. Then it
   turns to **Bonsai Ashes**, good only to donate.
-- **Frostbuy** sells one for 50,000 gold. Each purchase doubles the next price, up to 1,000,000,
-  and after a purchase she has another only after 3 more quests cleared.
+- **Frostbuy** sells one for 50,000 gold, always. After a purchase she has another only once you
+  have cleared more quests: 3 in the first world, 2 in the second. From the third world she has
+  another on your next visit.
 - **A chest** in the Malgrid Dungeon's 9th or 10th stratum may hold one: 1% per chest, at most one
   per run.
 

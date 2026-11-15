@@ -27,14 +27,16 @@ the items' numbers.
 4. Put an item in, then give up the quest. The item is in the vault's storage afterwards,
    identified. The bonsai now says `2 uses left.`
 5. After its third quest with a map the bonsai is Bonsai Ashes.
-6. Frostbuy sells the bonsai for 50,000; after buying it she has none until 3 quests are cleared,
-   then it costs 100,000.
+6. Frostbuy sells the bonsai for 50,000; after buying it she has none until 3 quests are cleared
+   in the first world (2 in the second), then it costs 50,000 again. From the third world it is
+   back on the next visit.
 
 ## Forcing it for a test
 
 `require("return-bonsai")` (from another mod) or `rq.mod.get("return-bonsai")` returns `BONSAI`
 (uses left to item number), `ASHES`, `USES_OF`, `capacity()`, `stored()`, `scan()`,
-`to_bonsai(ii)`, `to_quest_storage(ii)`, `price_now()`, `for_sale()`, `is_open()`,
+`to_bonsai(ii)`, `to_quest_storage(ii)`, `price_now()`, `restock_after()` (the quests to clear
+in the world being played), `for_sale()`, `is_open()`,
 `set_open(v)`, `data(key)` and `set_data(key, value)`. The state is the mod's `rq.savedata`
 (`stored`, `given`, `bought`, `cleared_since`, `dropped`), which only the mod's own file reaches:
 use `data` and `set_data`. Work on a copy of the save.
