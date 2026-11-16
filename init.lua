@@ -5,7 +5,7 @@
 -- free. A bonsai lasts 3 quests, then turns to Bonsai Ashes. Frostbuy sells it for 50,000 gold, and
 -- after a purchase again only once quests are cleared: 3 in the first world, 2 in the second, none
 -- from the third (it is back on the next visit); it can also come out of a chest in the Malgrid
--- Dungeon's 9th and 10th strata, once per run.
+-- Dungeon's 9th and 10th strata and its Xth Stratum, once per run.
 -- Lua owns every rule; the loader gives the Quest Storage window's tiles, the free appraisal and the
 -- window's locked cells (loader 2.47.0).
 
@@ -15,7 +15,8 @@ local MAX_CELLS = 15        -- as Quest Storage
 local PRICE = 50000         -- Frostbuy's price, every time
 local RESTOCK_AFTER = { 3, 2 } -- quests cleared after a purchase before it is sold again, by world;
                                -- from the third world, none
-local DROP_QUESTS = { [145] = true, [146] = true } -- Malgrid Dungeon, 9th and 10th strata
+local DROP_QUESTS = { [145] = true, [146] = true, [147] = true } -- Malgrid Dungeon, 9th and 10th
+                                                                  -- strata and the Xth Stratum
 local DROP_CHANCE = 1       -- percent, each time a chest picks its item there
 local QUEST_STORAGE, STORAGE = 8, 11
 local QUEST_ITEM = 22       -- an item's type that never goes in (rq.ItemDef.type "quest")
@@ -294,7 +295,7 @@ rq.shop.on_buy(function(ctx)
   rq.savedata.set("cleared_since", 0)
 end)
 
--- The chest in the Malgrid Dungeon's 9th and 10th strata, once per run ----------------
+-- The chest in the Malgrid Dungeon's 9th, 10th and Xth strata, once per run ------------
 
 -- A chest tries its pools in turn until one gives an item, so the pick with an item is the chest's:
 -- one roll per chest.

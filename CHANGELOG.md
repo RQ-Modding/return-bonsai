@@ -3,6 +3,12 @@
 Each section is a version of the mod, the `version` in `mod.json`. The release workflow copies the
 section of a tagged version into the release notes.
 
+## 1.2.0
+
+Balance (Moru):
+- A chest in the Malgrid Dungeon's Xth Stratum may hold a bonsai too, as in the 9th and 10th
+  strata: 1% per chest, at most one per run.
+
 ## 1.1.0
 
 Balance (Moru):

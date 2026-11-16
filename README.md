@@ -20,8 +20,8 @@ A legendary held item that keeps a quest's best finds, even when the quest fails
 - **Frostbuy** sells one for 50,000 gold, always. After a purchase she has another only once you
   have cleared more quests: 3 in the first world, 2 in the second. From the third world she has
   another on your next visit.
-- **A chest** in the Malgrid Dungeon's 9th or 10th stratum may hold one: 1% per chest, at most one
-  per run.
+- **A chest** in the Malgrid Dungeon's 9th or 10th stratum, or anywhere in its Xth Stratum, may hold
+  one: 1% per chest, at most one per run.
 
 ## Keys and settings
 
