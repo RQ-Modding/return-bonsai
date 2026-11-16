@@ -3,6 +3,12 @@
 Each section is a version of the mod, the `version` in `mod.json`. The release workflow copies the
 section of a tagged version into the release notes.
 
+## 1.2.1
+
+For testers (nothing changes in play):
+- `set_chance(pct)` and `drop_chance()` in what the mod returns: the Malgrid chests' chance for a
+  test (100 puts a bonsai in the first chest of a run), `nil` for the mod's own 1%.
+
 ## 1.2.0
 
 Balance (Moru):

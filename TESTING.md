@@ -37,7 +37,11 @@ the items' numbers.
 (uses left to item number), `ASHES`, `USES_OF`, `capacity()`, `stored()`, `scan()`,
 `to_bonsai(ii)`, `to_quest_storage(ii)`, `price_now()`, `restock_after()` (the quests to clear
 in the world being played), `for_sale()`, `is_open()`,
-`set_open(v)`, `data(key)` and `set_data(key, value)`. The state is the mod's `rq.savedata`
+`set_open(v)`, `data(key)`, `set_data(key, value)`, `drop_chance()` and `set_chance(pct)` (since
+1.2.1), which sets the Malgrid chests' chance in percent: 100 puts a bonsai in the first chest of a
+run that has had none, nil puts the mod's own 1% back. The chest's item is drawn when the area is
+laid out while Loot Preview is installed (`rq.loot.install`), and when the chest is opened without
+it, so call it before entering the area. The state is the mod's `rq.savedata`
 (`stored`, `given`, `bought`, `cleared_since`, `dropped`), which only the mod's own file reaches:
 use `data` and `set_data`. Work on a copy of the save.
 

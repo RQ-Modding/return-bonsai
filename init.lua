@@ -297,13 +297,15 @@ end)
 
 -- The chest in the Malgrid Dungeon's 9th, 10th and Xth strata, once per run ------------
 
+local chance_override = nil -- for a test: percent each time a chest picks its item there
+
 -- A chest tries its pools in turn until one gives an item, so the pick with an item is the chest's:
 -- one roll per chest.
 rq.loot.on_pick(function(ctx)
   if ctx.item == 0 or not DROP_QUESTS[rq.quests.current()] or rq.savedata.get("dropped", false) then
     return nil
   end
-  if math.random(100) > DROP_CHANCE then return nil end
+  if math.random(100) > (chance_override or DROP_CHANCE) then return nil end
   return BONSAI[USES]
 end)
 
@@ -336,6 +338,9 @@ return {
   for_sale = for_sale,
   is_open = function() return open end,
   set_open = function(v) open = v and true or false end,
+  -- A test's chance for the Malgrid chests, in percent; nil puts the mod's own back.
+  drop_chance = function() return chance_override or DROP_CHANCE end,
+  set_chance = function(pct) chance_override = pct end,
   -- The mod's rq.savedata, read and written from its own file (the store is the caller's mod's).
   data = function(key)
     local v = rq.savedata.get(key)
