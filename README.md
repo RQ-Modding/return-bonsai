@@ -49,6 +49,13 @@ release zip into the game's `mods` folder, so that you have `mods/return-bonsai/
 - The quest's end: `rq.quests.on_end` and `rq.item.appraise`.
 - Frostbuy: `rq.shop.on_stock`, `on_buy` and `rq.item.set`'s `price`; the chest: `rq.loot.on_pick`.
 
+## Credits
+
+The icons are AliceSoft's art: `icons/bonsai.webp` (the Return Bonsai), `icons/ashes.webp` (Bonsai
+Ashes) and `icons/tab.webp` (the map tab and the Quest Storage button) are sprites from AliceSoft's
+Rance games, each edited for this mod. All rights to them are reserved by AliceSoft; they are not
+covered by this mod's MIT license.
+
 ## License
 
 MIT, see [LICENSE](LICENSE).
