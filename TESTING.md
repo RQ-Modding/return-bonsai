@@ -45,8 +45,8 @@ it, so call it before entering the area. The state is the mod's `rq.savedata`
 (`stored`, `given`, `bought`, `cleared_since`, `dropped`), which only the mod's own file reaches:
 use `data` and `set_data`. Work on a copy of the save.
 
-## Test Lab
+## Tested in the game
 
-`return-bonsai` (with this mod installed): the tab and its cells, the buttons on Quest Storage and
+The Test Lab's scenario `return-bonsai` (with this mod installed): the tab and its cells, the buttons on Quest Storage and
 in the bonsai storage, the items kept and appraised at a failure, the uses and the ashes, the shop's
 price and restock, and the chest.
